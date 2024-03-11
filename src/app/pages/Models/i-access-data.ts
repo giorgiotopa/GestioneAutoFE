@@ -2,7 +2,7 @@ import { iUser } from "./i-user";
 
 export interface iAccessData {
 
-  accessToken: string;
-  user:iUser;
-
+  message: string;
+  dateResponse: string;
+  response: iUser;
 }

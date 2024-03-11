@@ -19,13 +19,14 @@ export class RegisterComponent {
     password:''
   }
 
-  nome:string = '';
+  username:string = '';
 
   save(){
     this.authService.signUp(this.registerData)
     .subscribe(data =>{
         console.log(data)
-        this.nome = data.user.nome
+          this.username = data.response.username;
+
     })
   }
 
