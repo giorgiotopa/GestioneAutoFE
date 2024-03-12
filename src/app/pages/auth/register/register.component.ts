@@ -1,6 +1,7 @@
 import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
 import { iRegister } from '../../Models/i-register';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,10 @@ import { iRegister } from '../../Models/i-register';
 })
 export class RegisterComponent {
 
-  constructor(private authService: AuthService){ }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ){ }
 
   registerData: iRegister = {
     nome:'',
@@ -26,6 +30,7 @@ export class RegisterComponent {
     .subscribe(data =>{
         console.log(data)
           this.username = data.response.username;
+          this.router.navigate(['/auth/login']);
 
     })
   }
