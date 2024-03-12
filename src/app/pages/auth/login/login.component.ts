@@ -23,8 +23,7 @@ export class LoginComponent {
   save(){
     this.authService.logIn(this.loginData)
     .subscribe(data =>{
-      alert(`Ciao ${data.response.username}`)
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     })
   }
 
