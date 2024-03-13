@@ -9,7 +9,10 @@
     <a routerLink="/home" class="text-decoration-none text-light">AutoShop</a>
   </h2>
 
-  <div class="col-md-3 text-end">
+  <div *ngIf="!(isLogged| async)" class="col-md-3 text-end">
     <a routerLink="/auth" type="button" class="btn btn-outline-warning  me-2">Login</a>
+  </div>
+  <div *ngIf="(isLogged | async)" class="col-md-3 text-end">
+    <a routerLink="/home" (click)="logout()" type="button" class="btn btn-outline-warning  me-2">Logout</a>
   </div>
 </header>
