@@ -23,9 +23,9 @@ export class HomeComponent {
 
   loadAuto(){
     this.autoService.getAll().subscribe(
-      (response: iApiResponse<iAuto>[]) =>{
+      (response: iApiResponse<iAuto>) =>{
         console.log(response);
-
+        this.autoList = response.response.content
       }
     )
   }

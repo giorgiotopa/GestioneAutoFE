@@ -16,14 +16,14 @@ export class AutoService {
     private http: HttpClient
   ) { }
 
-  getAll():Observable<iApiResponse<iAuto>[]>{
-    return this.http.get<iApiResponse<iAuto>[]>(this.apiUrl);
+  getAll():Observable<iApiResponse<iAuto>>{
+    return this.http.get<iApiResponse<iAuto>>(this.apiUrl);
   }
 
-  getAllMarca():Observable<string[]>{
-    return this.http.get<iAuto[]>(this.apiUrl)
-    .pipe(map(autoArr => autoArr.map(a => a.marca)));
-  }
+  // getAllMarca():Observable<string[]>{
+  //   return this.http.get<iAuto[]>(this.apiUrl)
+  //   .pipe(map(autoArr => autoArr.map(a => a.marca)));
+  // }
 
   getById(id:string):Observable<iAuto>{
     return this.http.get<iAuto>(this.apiUrl + `/${id}`);

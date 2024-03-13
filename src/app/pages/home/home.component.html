@@ -1,27 +1,18 @@
-<div class="container ">
-
-  <table class="table">
-    <tr>
-      <th>#</th>
-      <th>gusto</th>
-      <th>prezzo</th>
-      <th>attiva</th>
-      <th>azioni</th>
-    </tr>
-    <tr *ngFor="let auto of autoList">
-      <td>{{auto.id}}</td>
-      <td>{{auto.marca}}</td>
-      <td>{{auto.modello}}</td>
-      <td>{{auto.descrizione}}</td>
-      <!-- <td>
-        <a [routerLink]="['/menu','edit',pizza.id]" class="btn btn-warning">Modifica</a>
-        <button (click)="delete(pizza.id)" class="btn btn-danger">Elimina</button>
-      </td> -->
-    </tr>
-  </table>
-
-
-
-
-
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
+    <div  class="card">
+      <img [src]="auto.foto" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
+        <p class="card-text">{{auto.descrizione}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
+        <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
+        <li class="list-group-item">€ {{auto.prezzo}},00</li>
+      </ul>
+    </div>
+  </div>
+  </div>
 </div>
