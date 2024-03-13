@@ -1,3 +1,7 @@
+import { Observable, tap } from 'rxjs';
+import { AutoService } from '../../auto.service';
+import { iApiResponse } from '../Models/i-api-response';
+import { iAuto } from '../Models/i-auto';
 import { AuthService } from './../auth/auth.service';
 import { Component } from '@angular/core';
 
@@ -8,13 +12,22 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor(private authService: AuthService){}
+  autoList: iAuto[] = [];
 
-  userName:string|undefined = '';
+  constructor(private autoService: AutoService){}
+
 
   ngOnInit(){
-    this.authService.user$.subscribe(accessData => {
-      this.userName = accessData?.response.username
-    })
+    this.loadAuto()
   }
+
+  loadAuto(){
+    this.autoService.getAll().subscribe(
+      (response: iApiResponse<iAuto>[]) =>{
+        console.log(response);
+
+      }
+    )
+  }
+
 }

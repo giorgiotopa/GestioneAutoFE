@@ -1,8 +1,25 @@
 <div class="container ">
 
-<div *ngIf="userName">
-  Benvenuto {{userName}}
-</div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>gusto</th>
+      <th>prezzo</th>
+      <th>attiva</th>
+      <th>azioni</th>
+    </tr>
+    <tr *ngFor="let auto of autoList">
+      <td>{{auto.id}}</td>
+      <td>{{auto.marca}}</td>
+      <td>{{auto.modello}}</td>
+      <td>{{auto.descrizione}}</td>
+      <!-- <td>
+        <a [routerLink]="['/menu','edit',pizza.id]" class="btn btn-warning">Modifica</a>
+        <button (click)="delete(pizza.id)" class="btn btn-danger">Elimina</button>
+      </td> -->
+    </tr>
+  </table>
+
 
 
 
