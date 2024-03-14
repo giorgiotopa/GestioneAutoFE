@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row justify-content-center text-center mt-5">
     <div class="col-5">
       <div class="align-content-center">
@@ -17,5 +17,42 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container">
+  <div class="row justify-content-center text-center mt-5">
+    <div class="col-5">
+      <div class="align-content-center">
+        <h2 class="my-5">Registrazione</h2>
+        <form [formGroup]="registrationForm" (ngSubmit)="save()">
+          <input formControlName="nome" type="text" class="form-control my-2" placeholder="Nome">
+          <div *ngIf="registrationForm.get('nome')?.invalid && registrationForm.get('nome')?.touched" class="text-danger">
+            Il nome è obbligatorio
+          </div>
+          <input formControlName="cognome" type="text" class="form-control my-2" placeholder="Cognome">
+          <div *ngIf="registrationForm.get('cognome')?.invalid && registrationForm.get('cognome')?.touched" class="text-danger">
+            Il cognome è obbligatorio
+          </div>
+          <input formControlName="email" type="email" class="form-control my-2" placeholder="Email">
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-danger">
+            Inserisci un'email valida
+          </div>
+          <input formControlName="username" type="text" class="form-control my-2" placeholder="Username">
+          <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-danger">
+            Lo username è obbligatorio
+          </div>
+          <input formControlName="password" type="password" class="form-control my-2" placeholder="Password">
+          <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-danger">
+            La password deve essere lunga almeno 6 caratteri
+          </div>
+          <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-warning my-5">Registrati</button>
+        </form>
+        <div *ngIf="username" class="alert alert-success">
+          L'utente {{username}} è stato registrato
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
