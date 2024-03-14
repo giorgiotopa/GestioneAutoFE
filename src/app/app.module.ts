@@ -8,6 +8,7 @@ import { HeaderComponent } from './pages/components/header/header.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DettagliComponent } from './pages/dettagli/dettagli.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    DettagliComponent,
   ],
   imports: [
     BrowserModule,

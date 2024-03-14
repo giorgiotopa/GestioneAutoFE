@@ -1,8 +1,9 @@
-.container{
-  min-height: 70vh;
-  .card-img-top{
-    height: 300px;
-  }
+@import "../auth/auth.component.scss";
+
+
+.card-img-top{
+  height: 300px;
 }
+
 
 

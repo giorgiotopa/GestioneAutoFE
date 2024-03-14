@@ -25,8 +25,8 @@ export class AutoService {
   //   .pipe(map(autoArr => autoArr.map(a => a.marca)));
   // }
 
-  getById(id:string):Observable<iAuto>{
-    return this.http.get<iAuto>(this.apiUrl + `/${id}`);
+  getById(id:string):Observable<iApiResponse<iAuto>>{
+    return this.http.get<iApiResponse<iAuto>>(this.apiUrl + `/${id}`);
   }
 
   create(auto:Partial<iAuto>):Observable<iAuto>{
