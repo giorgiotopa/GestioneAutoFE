@@ -1,15 +1,21 @@
-<h5>Registrazione</h5>
-
-<form>
-  <input [(ngModel)]="registerData.nome" name="nome" type="nome" class="form-control" placeholder="Nome">
-  <input [(ngModel)]="registerData.cognome" name="cognome" type="cognome" class="form-control" placeholder="Cognome">
-  <input [(ngModel)]="registerData.email" name="email" type="email" class="form-control" placeholder="Email">
-  <input [(ngModel)]="registerData.username" name="username" type="username" class="form-control" placeholder="Username">
-  <input [(ngModel)]="registerData.password" name="password" type="password" class="form-control" placeholder="Password">
-  <button (click)="save()" class="btn btn-primary">Registrati</button>
-</form>
-
-<div *ngIf="username" class="alert alert-success">
-  L'utente {{username}} è stato registrato
+<div class="container">
+  <div class="row justify-content-center text-center mt-5">
+    <div class="col-5">
+      <div class="align-content-center">
+        <h2 class="my-5">Registrazione</h2>
+        <form class="my-4">
+          <input [(ngModel)]="registerData.nome" name="nome" type="nome" required class="form-control my-2" placeholder="Nome">
+          <input [(ngModel)]="registerData.cognome" name="cognome" type="cognome" required class="form-control my-2" placeholder="Cognome">
+          <input [(ngModel)]="registerData.email" name="email" type="email" required class="form-control my-2" placeholder="Email">
+          <input [(ngModel)]="registerData.username" name="username" type="username" required class="form-control my-2" placeholder="Username">
+          <input [(ngModel)]="registerData.password" name="password" type="password" required class="form-control my-2" placeholder="Password">
+          <button (click)="save()" class="btn btn-warning my-5">Registrati</button>
+        </form>
+        <div *ngIf="username" class="alert alert-success">
+          L'utente {{username}} è stato registrato
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
