@@ -3,11 +3,14 @@
     <div class="col-5">
       <div class="align-content-center">
         <h2 class="my-5">Accedi</h2>
-        <form class="my-4">
-          <input type="username" [(ngModel)]="loginData.username" name="username" class="form-control my-2" placeholder="Username">
-          <input type="password" [(ngModel)]="loginData.password" name="password" class="form-control my-2" placeholder="Password">
-          <button (click)="save()" class="btn btn-warning my-5">Login</button>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <input formControlName="username" type="username" class="form-control my-2" placeholder="Username">
+          <input formControlName="password" type="password" class="form-control my-2" placeholder="Password">
+          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-warning my-5">Login</button>
         </form>
+        <div *ngIf="errore" class="">
+            <p class="alert alert-warning ">Autenticazione fallita</p>
+        </div>
       </div>
     </div>
   </div>

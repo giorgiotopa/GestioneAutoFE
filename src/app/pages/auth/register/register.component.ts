@@ -26,7 +26,7 @@ export class RegisterComponent {
     password:''
   }
 
-  username:string = '';
+  errore: boolean = false;
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -37,16 +37,6 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-//Save form1
-  // save(){
-  //   this.authService.signUp(this.registerData)
-  //   .subscribe(data =>{
-  //       console.log(data)
-  //         this.username = data.response.username;
-  //         this.router.navigate(['/auth/login']);
-
-  //   })
-  // }
 
   save() {
     if (this.registrationForm.valid) {
@@ -61,8 +51,11 @@ export class RegisterComponent {
       this.authService.signUp(registerData).subscribe(
         (data) => {
           console.log(data);
-          this.username = data.response.username;
           this.router.navigate(['/auth/login']);
+        },
+        (error) => {
+          console.error(error);
+          this.errore = true;
         }
       );
     }
