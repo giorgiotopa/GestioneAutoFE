@@ -33,6 +33,7 @@ export class UtenteService {
     const formData: FormData = new FormData();
     formData.append('upload', file, file.name);
     return this.http.patch<any>(`${this.apiUrl}/${id}/upload`, formData);
+
   }
 
 }

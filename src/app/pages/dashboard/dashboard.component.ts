@@ -14,7 +14,6 @@ export class DashboardComponent {
 
   userData: iAccessData | null = null;
   utente!: iUser;
-  userSubscription: Subscription | undefined;
 
   constructor(
     private authService: AuthService,
@@ -29,21 +28,16 @@ export class DashboardComponent {
   }
 
   uploadAvatar(event: any) {
-    const file = event.target.files[0]; // Ottieni il file dall'evento
+    const file = event.target.files[0];
     if (file) {
       this.utenteService.uploadAvatar(this.utente.id, file).subscribe(response => {
-        console.log('Avatar uploaded successfully:', response);
-        // Aggiorna l'utente con i nuovi dati dell'avatar se necessario
+        this.updateUserAvatar(response.response.avatar)
       }, error => {
         console.error('Error uploading avatar:', error);
-        // Gestisci eventuali errori
       });
     }
   }
-
-  ngOnDestroy() {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
+  updateUserAvatar(avatarUrl: string) {
+    this.utente.avatar = avatarUrl;
   }
 }
