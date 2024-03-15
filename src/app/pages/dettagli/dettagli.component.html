@@ -1,17 +1,29 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-3 my-3 mx-2" >
-      <div  class="card">
-        <!-- <img [src]="auto.foto" class="card-img-top" *ngIf="auto.foto"> -->
+    <div class="col-4 my-3 mx-2" >
+      <img [src]="auto.foto" class="card-img-top rounded-2">
+    </div>
+      <div  class="card col-4 my-3 mx-2">
         <div class="card-body">
-          <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
+          <h5 class="card-title">{{auto.marca}} {{auto.modello}}</h5>
           <ul class="list-group list-group-flush">
+            <li class="list-group-item">Marca: {{auto.marca}}</li>
+            <li class="list-group-item">Modello: {{auto.modello}}</li>
+            <li class="list-group-item">Anno di immatricolazione: {{auto.annoDiImmatricolazione}}</li>
             <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
             <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
             <li class="list-group-item">€ {{auto.prezzo}},00</li>
+            <li class="list-group-item"> {{auto.descrizione}}</li>
           </ul>
-        </div>
       </div>
+      <div class="card-body">
+        <h5 class="card-title">Dettagli Proprietario</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Nome: {{user.nome}}</li>
+          <li class="list-group-item">Cognome: {{user.cognome}}</li>
+          <li class="list-group-item">Email: {{user.email}}</li>
+        </ul>
+    </div>
     </div>
   </div>
 </div>

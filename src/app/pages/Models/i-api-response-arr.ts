@@ -1,4 +1,4 @@
-export interface iApiResponse <T>{
+export interface iApiResponseArr <T>{
   message: string;
   dateResponse: string;
   response: {

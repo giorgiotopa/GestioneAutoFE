@@ -3,7 +3,8 @@ import { environment } from '../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, map, tap } from 'rxjs';
 import { iAuto } from './pages/Models/i-auto';
-import { iApiResponse } from './pages/Models/i-api-response';
+import { iApiResponseArr } from './pages/Models/i-api-response-arr';
+import { iApiResponseObj } from './pages/Models/i-api-response-obj';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class AutoService {
     private http: HttpClient
   ) { }
 
-  getAll():Observable<iApiResponse<iAuto>>{
-    return this.http.get<iApiResponse<iAuto>>(this.apiUrl);
+  getAll():Observable<iApiResponseArr<iAuto>>{
+    return this.http.get<iApiResponseArr<iAuto>>(this.apiUrl);
   }
 
   // getAllMarca():Observable<string[]>{
@@ -25,8 +26,8 @@ export class AutoService {
   //   .pipe(map(autoArr => autoArr.map(a => a.marca)));
   // }
 
-  getById(id:string):Observable<iApiResponse<iAuto>>{
-    return this.http.get<iApiResponse<iAuto>>(this.apiUrl + `/${id}`);
+  getById(id:string):Observable<iApiResponseObj<iAuto>>{
+    return this.http.get<iApiResponseObj<iAuto>>(this.apiUrl + `/${id}`);
   }
 
   create(auto:Partial<iAuto>):Observable<iAuto>{

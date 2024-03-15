@@ -1,6 +1,6 @@
 import { Observable, tap } from 'rxjs';
 import { AutoService } from '../../auto.service';
-import { iApiResponse } from '../Models/i-api-response';
+import { iApiResponseArr } from '../Models/i-api-response-arr';
 import { iAuto } from '../Models/i-auto';
 import { AuthService } from './../auth/auth.service';
 import { Component } from '@angular/core';
@@ -23,7 +23,7 @@ export class HomeComponent {
 
   loadAuto(){
     this.autoService.getAll().subscribe(
-      (response: iApiResponse<iAuto>) =>{
+      (response: iApiResponseArr<iAuto>) =>{
         console.log(response);
         this.autoList = response.response.content
       }

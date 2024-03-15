@@ -2,7 +2,9 @@ import { AutoService } from './../../auto.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { iAuto } from '../Models/i-auto';
-import { iApiResponse } from '../Models/i-api-response';
+import { iApiResponseArr } from '../Models/i-api-response-arr';
+import { iApiResponseObj } from '../Models/i-api-response-obj';
+import { iUser } from '../Models/i-user';
 
 @Component({
   selector: 'app-dettagli',
@@ -12,6 +14,7 @@ import { iApiResponse } from '../Models/i-api-response';
 export class DettagliComponent {
 
   auto!: iAuto;
+  user!: iUser;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +29,11 @@ export class DettagliComponent {
       const id = this.route.snapshot.paramMap.get('id');
       if (id !== null) {
         this.autoService.getById(id).subscribe(
-          (response: iApiResponse<iAuto>) => {
+          (response: iApiResponseObj<iAuto>) => {
             console.log(response);
-            this.auto = response.response.content[0];
-            console.log(this.auto);
+            this.auto = response.response;
+            this.user = response.response.utente;
+
           },
           (error) => {
             console.error(error);
