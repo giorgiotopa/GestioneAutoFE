@@ -30,7 +30,6 @@ export class DettagliComponent {
       if (id !== null) {
         this.autoService.getById(id).subscribe(
           (response: iApiResponseObj<iAuto>) => {
-            console.log(response);
             this.auto = response.response;
             this.user = response.response.utente;
 

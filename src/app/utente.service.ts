@@ -29,4 +29,10 @@ export class UtenteService {
     return this.http.delete<iUser>(this.apiUrl + `/${id}`);
   }
 
+  uploadAvatar(id: string, file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('upload', file, file.name);
+    return this.http.patch<any>(`${this.apiUrl}/${id}/upload`, formData);
+  }
+
 }

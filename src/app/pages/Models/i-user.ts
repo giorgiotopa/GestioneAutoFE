@@ -1,6 +1,6 @@
 export interface iUser {
 
-  id:number;
+  id:string;
   nome:string;
   cognome:string;
   email:string;

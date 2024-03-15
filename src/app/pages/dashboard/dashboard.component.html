@@ -1,10 +1,46 @@
 <div class="container">
-  <div class="card-body">
-    <h5 class="card-title">Dettagli Proprietario</h5>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Nome: {{utente.nome}}</li>
-      <li class="list-group-item">Cognome: {{utente.cognome}}</li>
-      <li class="list-group-item">Email: {{utente.email}}</li>
-    </ul>
+  <div class="row justify-content-center mt-5">
+    <div class="card col-5">
+      <div class="card-body mx-2">
+        <h5 class="card-title">Dettagli Utente</h5>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>Nome:</strong></td>
+              <td>{{utente.nome}}</td>
+            </tr>
+            <tr>
+              <td><strong>Cognome:</strong></td>
+              <td>{{utente.cognome}}</td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td>{{utente.email}}</td>
+            </tr>
+            <tr>
+              <td><strong>Username:</strong></td>
+              <td>{{utente.username}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center my-5">
+        <button class="btn btn-warning">Modifica</button>
+      </div>
+    </div>
+    <div class="card col-5 mx-2">
+      <div class="card-body">
+        <h5 class="card-title">Avatar</h5>
+        <img *ngIf="utente.avatar" [src]="utente.avatar" class="card-img-top">
+        <p *ngIf="!utente.avatar" class="text-center mt-5">Immagine Non Presente</p>
+      </div>
+      <div class="d-flex justify-content-center my-5">
+        <!-- <button *ngIf="utente.avatar" class="btn btn-warning">Modifica</button>
+        <button *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</button> -->
+        <label for="avatarInput" *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</label>
+        <label for="avatarInput" *ngIf="utente.avatar" class="btn btn-warning">Modifica</label>
+        <input type="file" id="avatarInput" (change)="uploadAvatar($event)" style="display: none;">
+      </div>
+    </div>
   </div>
 </div>

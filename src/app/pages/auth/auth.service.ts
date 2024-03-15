@@ -39,13 +39,32 @@ export class AuthService {
   logIn(data:iLogin):Observable<iAccessData>{
     return this.http.post<iAccessData>(this.loginUrl, data)
     .pipe(tap(data => {
+      console.log("questo è il login in auth.service", data)
       this.authSubject.next(data)
+      console.log("questo è il authSubject", this.authSubject)
       localStorage.setItem('accessData', JSON.stringify(data))
 
       this.autoLogout(data.message)
 
     }))
   }
+
+  // logIn(data: iLogin): Observable<iAccessData> {
+  //   return this.http.post<iAccessData>(this.loginUrl, data)
+  //     .pipe(
+  //       tap(data => {
+  //         console.log("questo è il login", data);
+  //         this.updateUserData(data); // Estrai questa logica in un metodo separato
+  //       })
+  //     );
+  // }
+
+  // private updateUserData(data: iAccessData) {
+  //   console.log("questo è il authSubject", this.authSubject);
+  //   this.authSubject.next(data);
+  //   localStorage.setItem('accessData', JSON.stringify(data));
+  //   this.autoLogout(data.message);
+  // }
 
   autoLogout(jwt:string){
     const expDate = this.jwtHelper.getTokenExpirationDate(jwt) as Date
@@ -66,7 +85,10 @@ export class AuthService {
     if (!userJson) return;
 
     const accessData:iAccessData = JSON.parse(userJson);
-    if(this.jwtHelper.isTokenExpired(accessData.message)) return;
+    if(this.jwtHelper.isTokenExpired(accessData.message)){
+      this.logout();
+      return;
+    }
 
     this.autoLogout(accessData.message)
     this.authSubject.next(accessData)

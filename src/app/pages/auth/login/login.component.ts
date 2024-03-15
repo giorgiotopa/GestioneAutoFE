@@ -32,19 +32,13 @@ export class LoginComponent {
     });
   }
 
-  // save(){
-  //   this.authService.logIn(this.loginData)
-  //   .subscribe(data =>{
-  //     console.log(data);
-  //     // this.router.navigate(['/dashboard']);
-  //   })
-  // }
   login() {
     if (this.loginForm.valid) {
       this.authService.logIn(this.loginForm.value).subscribe(
         (data) => {
-          console.log(data);
-          // this.router.navigate(['/dashboard']);
+          console.log("Login di ligon.ts: ",data);
+
+          this.router.navigate(['/dashboard']);
         },
         (error) => {
           console.error(error);
