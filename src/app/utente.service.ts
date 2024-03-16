@@ -18,7 +18,7 @@ export class UtenteService {
 
 
   getById(id:string): Observable<iApiResponseObj<iUser>>{
-    return this.http.get<iApiResponseObj<iUser>>(this.apiUrl + `/${id}`);
+    return this.http.get<iApiResponseObj<iUser>>(this.apiUrl + `/id` + `/${id}`);
   }
 
   update(user: iUser){
