@@ -1,7 +1,7 @@
 import { iUser } from "./i-user";
 
 export interface iAuto {
-  id: number;
+  id: string;
   marca: string;
   modello: string;
   annoDiImmatricolazione: number;

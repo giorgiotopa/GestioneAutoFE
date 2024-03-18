@@ -33,7 +33,6 @@ export class UtenteService {
     const formData: FormData = new FormData();
     formData.append('upload', file, file.name);
     return this.http.patch<any>(`${this.apiUrl}/${id}/upload`, formData);
-
   }
 
   getAutoByUtenteId(id: string): Observable<any> {
@@ -44,8 +43,7 @@ export class UtenteService {
   }
   private handleError(error: HttpErrorResponse): Observable<any> {
     console.error('Errore nella richiesta:', error);
-    // Gestisci l'errore qui, ad esempio restituendo un oggetto vuoto o un messaggio di errore personalizzato
-    return throwError('Errore durante la richiesta. Si prega di riprovare.'); // Restituisci un messaggio di errore personalizzato
+    return throwError('Errore durante la richiesta. Si prega di riprovare.');
   }
 
 }

@@ -41,9 +41,20 @@ export class DashboardComponent {
         this.getAutoUtente(this.utente.id);
       }
     });
-
   }
 
+  uploadFotoAuto(event: any, id:string) {
+    const file = event.target.files[0];
+    if (file) {
+      this.autoService.uploadFoto(id, file).subscribe(response => {
+        console.log(response);
+
+        this.updateFotoAuto(response.response.foto, id)
+      }, error => {
+        console.error('Error uploading avatar:', error);
+      });
+    }
+  }
 
   uploadAvatar(event: any) {
     const file = event.target.files[0];
@@ -53,6 +64,13 @@ export class DashboardComponent {
       }, error => {
         console.error('Error uploading avatar:', error);
       });
+    }
+  }
+
+  updateFotoAuto(fotoUrl: string, id: string){
+    const autoToUpdate = this.autoList.find(a => a.id === id);
+    if(autoToUpdate){
+      autoToUpdate.foto = fotoUrl;
     }
   }
   updateUserAvatar(avatarUrl: string) {
@@ -77,12 +95,10 @@ export class DashboardComponent {
       case 'password':
         this.utente.password = newValue;
         break;
-      // Aggiungi altri casi per altri campi se necessario
     }
   }
 
   updateUtente() {
-    // Chiamata al metodo update del servizio UtenteService per aggiornare le informazioni dell'utente
     this.utenteService.update(this.utente).subscribe(
       response => {
         console.log('Utente aggiornato con successo:', response);
@@ -90,7 +106,6 @@ export class DashboardComponent {
       },
       error => {
         console.error("Errore durante l'aggiornamento dell'utente:", error);
-        // Gestione degli errori
       }
     );
   }

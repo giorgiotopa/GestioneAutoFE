@@ -10,7 +10,11 @@
       </div>
       <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
         <div  class="card">
-          <img [src]="auto.foto" class="card-img-top">
+          <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top">
+          <div *ngIf="!auto.foto" class="d-flex justify-content-center my-5">
+            <label for="avatarInput" class="btn btn-warning">Aggiungi</label>
+            <input type="file" id="avatarInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+          </div>
           <div class="card-body">
             <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
             <ul class="list-group list-group-flush">

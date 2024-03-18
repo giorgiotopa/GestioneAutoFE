@@ -39,6 +39,12 @@ export class AutoService {
     return this.http.put<iAuto>(this.apiUrl + `/${auto.id}`,auto);
   }
 
+  uploadFoto(id: string, file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('upload', file, file.name);
+    return this.http.patch<any>(`${this.apiUrl}/${id}/upload`, formData);
+  }
+
   delete(id:string){
     return this.http.delete<iAuto>(this.apiUrl + `/${id}`);
   }
