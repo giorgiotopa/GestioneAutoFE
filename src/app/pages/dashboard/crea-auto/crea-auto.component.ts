@@ -3,9 +3,9 @@ import { iUser } from '../../Models/i-user';
 import { iAuto } from '../../Models/i-auto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
-import { UtenteService } from '../../../utente.service';
 import { AutoService } from '../../../auto.service';
 import { iRegisterAuto } from '../../Models/i-register-auto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crea-auto',
@@ -17,14 +17,13 @@ export class CreaAutoComponent {
   utente!: iUser;
   auto!: iAuto;
   isModificaAttiva = false;
-  // formData: Partial<iAuto> = {};
   autoForm!: FormGroup;
 
   constructor(
     private authService: AuthService,
-    private utenteService: UtenteService,
     private autoService: AutoService,
     private formBuilder: FormBuilder,
+    private router: Router
 
     ) {}
 
@@ -63,6 +62,8 @@ export class CreaAutoComponent {
           (data) => {
             console.log('Nuova auto creata:', data);
             this.autoForm.reset();
+            this.router.navigate(['/dashboard']);
+
           },
           (error) => {
             console.error('Errore durante la creazione dell\'auto:', error);

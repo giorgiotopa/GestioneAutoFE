@@ -49,23 +49,6 @@ export class AuthService {
     }))
   }
 
-  // logIn(data: iLogin): Observable<iAccessData> {
-  //   return this.http.post<iAccessData>(this.loginUrl, data)
-  //     .pipe(
-  //       tap(data => {
-  //         console.log("questo è il login", data);
-  //         this.updateUserData(data); // Estrai questa logica in un metodo separato
-  //       })
-  //     );
-  // }
-
-  // private updateUserData(data: iAccessData) {
-  //   console.log("questo è il authSubject", this.authSubject);
-  //   this.authSubject.next(data);
-  //   localStorage.setItem('accessData', JSON.stringify(data));
-  //   this.autoLogout(data.message);
-  // }
-
   autoLogout(jwt:string){
     const expDate = this.jwtHelper.getTokenExpirationDate(jwt) as Date
     const expMS = expDate.getTime() - new Date().getTime()
