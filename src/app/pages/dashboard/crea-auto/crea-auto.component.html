@@ -1,0 +1,28 @@
+<div class="container">
+  <p>crea-auto works!</p>
+   <form [formGroup]="autoForm" (ngSubmit)="saveAuto()">
+
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="marca" placeholder="Marca" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="modello" placeholder="Modello" required>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" formControlName="annoDiImmatricolazione" placeholder="Anno Di Immatricolazione" required>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" formControlName="cilindrata" placeholder="Cilindrata" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="tipoAlimentazione" placeholder="Tipo Alimentazione" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="descrizione" placeholder="Descrizione" required>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" formControlName="prezzo" placeholder="Prezzo" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Crea Auto</button>
+    </form>
+</div>

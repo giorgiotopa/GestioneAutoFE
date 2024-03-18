@@ -5,17 +5,20 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
-import { ModificaUtenteComponent } from './modifica-utente/modifica-utente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreaAutoComponent } from './crea-auto/crea-auto.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ModificaUtenteComponent
+    CreaAutoComponent,
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

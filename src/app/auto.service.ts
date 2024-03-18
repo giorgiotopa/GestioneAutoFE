@@ -5,6 +5,7 @@ import { Observable, Subject, map, tap } from 'rxjs';
 import { iAuto } from './pages/Models/i-auto';
 import { iApiResponseArr } from './pages/Models/i-api-response-arr';
 import { iApiResponseObj } from './pages/Models/i-api-response-obj';
+import { iRegisterAuto } from './pages/Models/i-register-auto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +31,12 @@ export class AutoService {
     return this.http.get<iApiResponseObj<iAuto>>(this.apiUrl + `/${id}`);
   }
 
-  create(auto:Partial<iAuto>):Observable<iAuto>{
-    return this.http.post<iAuto>(this.apiUrl,auto)
+  create(auto:Partial<iRegisterAuto>):Observable<iAuto>{
+    return this.http.post<iAuto>(this.apiUrl + `/create`,auto)
   }
 
-  update(pizza:iAuto){
-    return this.http.put<iAuto>(this.apiUrl + `/${pizza.id}`,pizza);
+  update(auto:iAuto){
+    return this.http.put<iAuto>(this.apiUrl + `/${auto.id}`,auto);
   }
 
   delete(id:string){

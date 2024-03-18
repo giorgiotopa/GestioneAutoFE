@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { ModificaUtenteComponent } from './modifica-utente/modifica-utente.component';
+import { CreaAutoComponent } from './crea-auto/crea-auto.component';
+
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent
   },
   {
-    path: 'modifica-utente/:id', component: ModificaUtenteComponent
+    path: 'crea-auto', component: CreaAutoComponent
   },
+
 ];
 
 @NgModule({

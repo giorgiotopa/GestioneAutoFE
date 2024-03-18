@@ -18,13 +18,13 @@ export class RegisterComponent {
     ){ }
 
   registrationForm!: FormGroup;
-  registerData: iRegister = {
-    nome:'',
-    cognome:'',
-    email:'',
-    username:'',
-    password:''
-  }
+  // registerData: iRegister = {
+  //   nome:'',
+  //   cognome:'',
+  //   email:'',
+  //   username:'',
+  //   password:''
+  // }
 
   errore: boolean = false;
 

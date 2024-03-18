@@ -7,25 +7,35 @@
           <tbody>
             <tr>
               <td><strong>Nome:</strong></td>
-              <td>{{utente.nome}}</td>
+              <td *ngIf="!isModificaAttiva">{{utente.nome}}</td>
+              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
             </tr>
             <tr>
               <td><strong>Cognome:</strong></td>
-              <td>{{utente.cognome}}</td>
+              <td *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
+              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
             </tr>
             <tr>
               <td><strong>Email:</strong></td>
-              <td>{{utente.email}}</td>
+              <td *ngIf="!isModificaAttiva">{{utente.email}}</td>
+              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
             </tr>
             <tr>
               <td><strong>Username:</strong></td>
-              <td>{{utente.username}}</td>
+              <td *ngIf="!isModificaAttiva">{{utente.username}}</td>
+              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
+            </tr>
+            <tr>
+              <td><strong>Password:</strong></td>
+              <td *ngIf="!isModificaAttiva">******</td>
+              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="d-flex justify-content-center my-5">
-        <button [routerLink]="['/dashboard/modifica-utente', utente.id]" class="btn btn-warning">Modifica</button>
+        <button *ngIf="isModificaAttiva" class="btn btn-warning" (click)="updateUtente()">Salva</button>
+        <button *ngIf="!isModificaAttiva" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
       </div>
     </div>
     <div class="card col-5 mx-2">
@@ -43,4 +53,11 @@
       </div>
     </div>
   </div>
+
+<div class="card col-5 mt-5">
+  <div class="card-body">
+    <h5 routerLink="" class="card-title"></h5>
+    <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Nuova Auto</a>
+  </div>
+</div>
 </div>
