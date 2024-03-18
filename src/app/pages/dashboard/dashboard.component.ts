@@ -8,6 +8,9 @@ import { iAuto } from '../Models/i-auto';
 import { AutoService } from '../../auto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { iRegisterAuto } from '../Models/i-register-auto';
+import { iApiResponseArr } from '../Models/i-api-response-arr';
+import { iApiResponseObj } from '../Models/i-api-response-obj';
+import { iUserAuto } from '../Models/i-user-auto';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +24,8 @@ export class DashboardComponent {
   auto!: iAuto;
   isModificaAttiva = false;
 
+  autoList: iAuto[] = [];
+
   constructor(
     private authService: AuthService,
     private utenteService: UtenteService,
@@ -33,7 +38,7 @@ export class DashboardComponent {
     this.authService.user$.subscribe(user => {
       if (user) {
         this.utente = user.response;
-        // this.getAutoUtente(this.utente.id);
+        this.getAutoUtente(this.utente.id);
       }
     });
 
@@ -97,28 +102,16 @@ export class DashboardComponent {
 
   getAutoUtente(userId: string): void {
     this.utenteService.getAutoByUtenteId(userId).subscribe(
-      (data) => {
-        console.log("Risposta di data: " , data);
+      (response: iUserAuto) => {
+        console.log("Response: " , response);
 
-        this.userData = data;
-      },
+        this.autoList = response.response
+
+            },
       (error) => {
         console.error('Errore nel recupero delle auto:', error);
       }
     );
   }
-
-  // createAuto(newAutoData: Partial<iAuto>): void {
-  //   this.autoService.create(newAutoData).subscribe(
-  //     (autoCreated: iAuto) => {
-  //       console.log('Nuova auto creata:', autoCreated);
-  //       // Aggiorna la lista delle auto o altre operazioni necessarie dopo la creazione
-  //     },
-  //     (error) => {
-  //       console.error('Errore durante la creazione dell\'auto:', error);
-  //       // Gestione dell'errore, ad esempio mostrando un messaggio all'utente
-  //     }
-  //   );
-  // }
 
 }

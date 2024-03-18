@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row justify-content-center">
     <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
-    <div  class="card">
-      <img [src]="auto.foto" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-          <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-          <li class="list-group-item">€ {{auto.prezzo}},00</li>
-          <div class="text-center">
-            <button [routerLink]="['/dettagli', auto.id]" class="btn btn-warning my-3">Dettagli</button>
-          </div>
-        </ul>
+      <div  class="card">
+        <img [src]="auto.foto" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
+            <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
+            <li class="list-group-item">€ {{auto.prezzo}},00</li>
+            <div class="text-center">
+              <button [routerLink]="['/dettagli', auto.id]" class="btn btn-warning my-3">Dettagli</button>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </div>
