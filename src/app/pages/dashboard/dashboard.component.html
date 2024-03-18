@@ -1,79 +1,86 @@
 <div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="card col-5">
-      <div class="card-body mx-2">
-        <h5 class="card-title">Dettagli Utente</h5>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td><strong>Nome:</strong></td>
-              <td *ngIf="!isModificaAttiva">{{utente.nome}}</td>
-              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
-            </tr>
-            <tr>
-              <td><strong>Cognome:</strong></td>
-              <td *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
-              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
-            </tr>
-            <tr>
-              <td><strong>Email:</strong></td>
-              <td *ngIf="!isModificaAttiva">{{utente.email}}</td>
-              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
-            </tr>
-            <tr>
-              <td><strong>Username:</strong></td>
-              <td *ngIf="!isModificaAttiva">{{utente.username}}</td>
-              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
-            </tr>
-            <tr>
-              <td><strong>Password:</strong></td>
-              <td *ngIf="!isModificaAttiva">******</td>
-              <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="d-flex justify-content-center my-5">
-        <button *ngIf="isModificaAttiva" class="btn btn-warning" (click)="updateUtente()">Salva</button>
-        <button *ngIf="!isModificaAttiva" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
-      </div>
+    <div class="row justify-content-center mt-5">
+      <div class=" col-12 mt-5 text-center">
+        <h5 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h5>
+        <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
     </div>
-    <div class="card col-5 mx-2">
-      <div class="card-body">
-        <h5 class="card-title">Avatar</h5>
-        <div class="d-flex justify-content-center ">
-          <img *ngIf="utente.avatar" [src]="utente.avatar" class="card-img-top avatar rounded-2">
+
+      <div *ngIf="autoList" class="col-12 my-5">
+        <h3 class="text-center">Le Tue Auto</h3>
+      </div>
+      <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
+        <div  class="card">
+          <img [src]="auto.foto" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
+              <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
+              <li class="list-group-item">€ {{auto.prezzo}},00</li>
+              <div class="text-center">
+                <button [routerLink]="['/', auto.id]" class="btn btn-warning my-3">Modifica</button>
+              </div>
+            </ul>
+          </div>
         </div>
-        <p *ngIf="!utente.avatar" class="text-center mt-5">Immagine Non Presente</p>
       </div>
-      <div class="d-flex justify-content-center my-5">
-        <label for="avatarInput" *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</label>
-        <label for="avatarInput" *ngIf="utente.avatar" class="btn btn-warning">Modifica</label>
-        <input type="file" id="avatarInput" (change)="uploadAvatar($event)" style="display: none;">
+  </div>
+
+  <div class="col-12 d-flex justify-content-center">
+    <div class="row">
+      <h3 class="text-center col-12 my-5">Informazioni Utente</h3>
+      <div class="card col-7">
+        <div class="card-body mx-2">
+          <h5 class="card-title">Dettagli</h5>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Nome:</strong></td>
+                <td *ngIf="!isModificaAttiva">{{utente.nome}}</td>
+                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
+              </tr>
+              <tr>
+                <td><strong>Cognome:</strong></td>
+                <td *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
+                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
+              </tr>
+              <tr>
+                <td><strong>Email:</strong></td>
+                <td *ngIf="!isModificaAttiva">{{utente.email}}</td>
+                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
+              </tr>
+              <tr>
+                <td><strong>Username:</strong></td>
+                <td *ngIf="!isModificaAttiva">{{utente.username}}</td>
+                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
+              </tr>
+              <tr>
+                <td><strong>Password:</strong></td>
+                <td *ngIf="!isModificaAttiva">******</td>
+                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-center my-5">
+          <button *ngIf="isModificaAttiva" class="btn btn-warning" (click)="updateUtente()">Salva</button>
+          <button *ngIf="!isModificaAttiva" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
+        </div>
       </div>
-    </div>
-    <div *ngIf="autoList" class="col-12 my-5">
-      <h3 class="text-center">Le Tue Auto</h3>
-    </div>
-    <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
-      <div  class="card">
-        <img [src]="auto.foto" class="card-img-top">
+      <div class="card mx-2 col-4">
         <div class="card-body">
-          <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-            <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-            <li class="list-group-item">€ {{auto.prezzo}},00</li>
-            <div class="text-center">
-              <button [routerLink]="['/', auto.id]" class="btn btn-warning my-3">Dettagli</button>
-            </div>
-          </ul>
+          <h5 class="card-title">Avatar</h5>
+          <div class="d-flex justify-content-center ">
+            <img *ngIf="utente.avatar" [src]="utente.avatar" class="card-img-top avatar rounded-2">
+          </div>
+          <p *ngIf="!utente.avatar" class="text-center mt-5">Immagine Non Presente</p>
+        </div>
+        <div class="d-flex justify-content-center my-5">
+          <label for="avatarInput" *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</label>
+          <label for="avatarInput" *ngIf="utente.avatar" class="btn btn-warning">Modifica</label>
+          <input type="file" id="avatarInput" (change)="uploadAvatar($event)" style="display: none;">
         </div>
       </div>
     </div>
-</div>
-<div class=" col-12 mt-5 text-center">
-    <h5 routerLink="" class="card-title">Vuoi vendere un auto?</h5>
-    <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
-</div>
+  </div>
 </div>
