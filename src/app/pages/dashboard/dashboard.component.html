@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container text-light">
     <div class="row justify-content-center mt-5">
       <div class=" col-12 mt-5 text-center">
         <h2 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h2>
         <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
     </div>
 
-      <div *ngIf="auto" class="col-12 my-5">
+      <div class="col-12 my-5">
         <h3 class="text-center">Le Tue Auto</h3>
       </div>
       <div *ngFor="let auto of autoList" class="col-7 my-3 mx-2 card" >
@@ -37,7 +37,6 @@
         </div>
       </div>
   </div>
-
   <div class="col-12 d-flex justify-content-center">
     <div class="row">
       <h3 class="text-center col-12 my-5">Informazioni Utente</h3>

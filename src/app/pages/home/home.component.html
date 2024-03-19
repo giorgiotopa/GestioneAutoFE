@@ -2,9 +2,9 @@
   <div class="row justify-content-center">
 
     <div *ngIf="autoList" class="col-12 my-5">
-      <h2 class="text-center">Annunci Disponibili</h2>
+      <h2 class="text-center text-light">Annunci Disponibili</h2>
     </div>
-    <div *ngFor="let auto of autoList" class="col-7 my-3 mx-2 card" >
+    <div *ngFor="let auto of autoList" class="col-5 my-3 mx-2 card " >
       <div class="row">
         <div class="col-5">
           <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
