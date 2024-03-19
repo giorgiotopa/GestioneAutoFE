@@ -1,31 +1,39 @@
 <div class="container">
     <div class="row justify-content-center mt-5">
       <div class=" col-12 mt-5 text-center">
-        <h5 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h5>
+        <h2 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h2>
         <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
     </div>
 
-      <div *ngIf="autoList" class="col-12 my-5">
+      <div *ngIf="auto" class="col-12 my-5">
         <h3 class="text-center">Le Tue Auto</h3>
       </div>
-      <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
-        <div  class="card">
-          <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top">
-          <div *ngIf="!auto.foto" class="d-flex justify-content-center my-5">
-            <label for="fotoInput" class="btn btn-warning">Aggiungi</label>
-            <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+      <div *ngFor="let auto of autoList" class="col-7 my-3 mx-2 card" >
+        <div class="row">
+          <div class="col-5">
+            <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
+            <div *ngIf="!auto.foto" class="d-flex justify-content-center my-5">
+              <label for="fotoInput" class="btn btn-warning">Aggiungi</label>
+              <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+            </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-              <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-              <li class="list-group-item">€ {{auto.prezzo}},00</li>
-              <div class="text-center">
-                <button [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3">Modifica</button>
-              </div>
-            </ul>
+          <div  class="col-6">
+            <div class="card-body">
+              <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Marca: {{auto.marca}}</li>
+                <li class="list-group-item">Modello: {{auto.modello}}</li>
+                <li class="list-group-item">Anno di Immatricolazione: {{auto.annoDiImmatricolazione}}</li>
+                <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
+                <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
+                <li class="list-group-item">€ {{auto.prezzo}},00</li>
+              </ul>
+            </div>
           </div>
+        </div>
+        <div class="text-center">
+          <button [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3 mx-2">Modifica</button>
+          <button  class="btn btn-danger my-3" (click)="deleteAuto(auto.id)">Elimina</button>
         </div>
       </div>
   </div>

@@ -60,7 +60,6 @@ export class CreaAutoComponent {
 
         this.autoService.create(createAuto).subscribe(
           (data) => {
-            console.log('Nuova auto creata:', data);
             this.autoForm.reset();
             this.router.navigate(['/dashboard']);
 
