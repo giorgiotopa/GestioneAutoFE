@@ -47,8 +47,6 @@ export class DashboardComponent {
     const file = event.target.files[0];
     if (file) {
       this.autoService.uploadFoto(id, file).subscribe(response => {
-        console.log(response);
-
         this.updateFotoAuto(response.response.foto, id)
       }, error => {
         console.error('Error uploading avatar:', error);

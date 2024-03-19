@@ -2,6 +2,10 @@
   <div class="row justify-content-center">
     <div *ngIf="auto" class="col-4 my-3 mx-2" >
       <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
+      <div *ngIf="auto.foto" class="d-flex justify-content-center my-5">
+        <label for="fotoInput" class="btn btn-warning">Modifica</label>
+        <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+      </div>
     </div>
     <div *ngIf="auto" class="card col-4 my-3 mx-2">
       <p>{{auto.id}}</p>

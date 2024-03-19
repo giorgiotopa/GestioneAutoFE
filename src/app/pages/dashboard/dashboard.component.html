@@ -12,8 +12,8 @@
         <div  class="card">
           <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top">
           <div *ngIf="!auto.foto" class="d-flex justify-content-center my-5">
-            <label for="avatarInput" class="btn btn-warning">Aggiungi</label>
-            <input type="file" id="avatarInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+            <label for="fotoInput" class="btn btn-warning">Aggiungi</label>
+            <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
           </div>
           <div class="card-body">
             <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>

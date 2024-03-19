@@ -40,7 +40,6 @@ export class ModificaAutoComponent {
       this.autoService.getById(id).subscribe(
         (response: iApiResponseObj<iAuto>) => {
           this.auto = response.response;
-          console.log(response);
           this.autoRegister(this.auto);
 
         },
@@ -70,13 +69,23 @@ export class ModificaAutoComponent {
   updateAuto() {
     this.autoService.update(this.autoUpdate).subscribe(
       response => {
-        console.log('Auto aggiornata con successo:', response);
         this.isModifica = false;
       },
       error => {
         console.error("Errore durante l'aggiornamento dell'utente:", error);
       }
     );
+  }
+
+  uploadFotoAuto(event: any, id:string) {
+    const file = event.target.files[0];
+    if (file) {
+      this.autoService.uploadFoto(id, file).subscribe(response => {
+        this.auto.foto = response.response.foto
+      }, error => {
+        console.error('Error uploading avatar:', error);
+      });
+    }
   }
 
 }
