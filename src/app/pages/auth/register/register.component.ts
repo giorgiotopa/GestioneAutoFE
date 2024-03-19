@@ -18,13 +18,6 @@ export class RegisterComponent {
     ){ }
 
   registrationForm!: FormGroup;
-  // registerData: iRegister = {
-  //   nome:'',
-  //   cognome:'',
-  //   email:'',
-  //   username:'',
-  //   password:''
-  // }
 
   errore: boolean = false;
 
@@ -50,7 +43,6 @@ export class RegisterComponent {
 
       this.authService.signUp(registerData).subscribe(
         (data) => {
-          console.log(data);
           this.router.navigate(['/auth/login']);
         },
         (error) => {

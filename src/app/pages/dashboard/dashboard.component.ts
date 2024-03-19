@@ -118,11 +118,8 @@ export class DashboardComponent {
   getAutoUtente(userId: string): void {
     this.utenteService.getAutoByUtenteId(userId).subscribe(
       (response: iUserAuto) => {
-        console.log("Response: " , response);
-
         this.autoList = response.response
-
-            },
+      },
       (error) => {
         console.error('Errore nel recupero delle auto:', error);
       }

@@ -22,7 +22,7 @@
               <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
               <li class="list-group-item">€ {{auto.prezzo}},00</li>
               <div class="text-center">
-                <button [routerLink]="['/', auto.id]" class="btn btn-warning my-3">Modifica</button>
+                <button [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3">Modifica</button>
               </div>
             </ul>
           </div>

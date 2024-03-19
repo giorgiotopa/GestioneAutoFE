@@ -39,9 +39,7 @@ export class AuthService {
   logIn(data:iLogin):Observable<iAccessData>{
     return this.http.post<iAccessData>(this.loginUrl, data)
     .pipe(tap(data => {
-      console.log("questo è il login in auth.service", data)
       this.authSubject.next(data)
-      console.log("questo è il authSubject", this.authSubject)
       localStorage.setItem('accessData', JSON.stringify(data))
 
       this.autoLogout(data.message)

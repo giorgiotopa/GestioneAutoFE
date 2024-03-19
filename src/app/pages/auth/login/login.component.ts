@@ -36,8 +36,6 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.logIn(this.loginForm.value).subscribe(
         (data) => {
-          console.log("Login di ligon.ts: ",data);
-
           this.router.navigate(['/dashboard']);
         },
         (error) => {

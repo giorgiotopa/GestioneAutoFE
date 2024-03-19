@@ -1,5 +1,6 @@
 export interface iRegisterAuto {
 
+  id:string;
   marca: string;
   modello: string;
   annoDiImmatricolazione: number;

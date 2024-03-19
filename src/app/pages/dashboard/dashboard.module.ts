@@ -7,12 +7,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreaAutoComponent } from './crea-auto/crea-auto.component';
+import { ModificaAutoComponent } from './modifica-auto/modifica-auto.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CreaAutoComponent,
+    ModificaAutoComponent,
   ],
   imports: [
     CommonModule,

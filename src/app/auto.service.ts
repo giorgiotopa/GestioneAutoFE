@@ -35,7 +35,7 @@ export class AutoService {
     return this.http.post<iAuto>(this.apiUrl + `/create`,auto)
   }
 
-  update(auto:iAuto){
+  update(auto:Partial<iRegisterAuto>){
     return this.http.put<iAuto>(this.apiUrl + `/${auto.id}`,auto);
   }
 

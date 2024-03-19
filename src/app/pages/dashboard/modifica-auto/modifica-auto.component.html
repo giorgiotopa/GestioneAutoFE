@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="auto" class="col-4 my-3 mx-2" >
+      <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
+    </div>
+    <div *ngIf="auto" class="card col-4 my-3 mx-2">
+      <p>{{auto.id}}</p>
+      <div class="card-body">
+        <h5 class="card-title">{{auto.marca}} {{auto.modello}}</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Marca: {{auto.marca}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.marca"></li>
+
+          <li class="list-group-item">Modello: {{auto.modello}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.modello"></li>
+
+          <li class="list-group-item">Anno di immatricolazione: {{auto.annoDiImmatricolazione}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.annoDiImmatricolazione"></li>
+
+          <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.cilindrata"></li>
+
+          <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.tipoAlimentazione"></li>
+
+          <li class="list-group-item">€ {{auto.prezzo}},00</li>
+          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.prezzo"></li>
+
+          <li class="list-group-item"> {{auto.descrizione}}</li>
+          <li *ngIf="isModifica" class="list-group-item"><textarea type="text" [(ngModel)]="autoUpdate.descrizione"></textarea></li>
+        </ul>
+        <div class="d-flex justify-content-center my-5">
+          <button *ngIf="isModifica" class="btn btn-warning" (click)="updateAuto()">Salva</button>
+          <button *ngIf="!isModifica" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
