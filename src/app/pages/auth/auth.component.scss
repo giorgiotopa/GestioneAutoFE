@@ -1,5 +1,16 @@
 .container{
   min-height: 70vh;
+  color: lightgoldenrodyellow;
+
+  .bg-dark{
+    color: lightgoldenrodyellow;
+  }
+
+  .bg-transparent-gradient{
+    background: radial-gradient(circle, rgba(33,37,41,1) 0%, rgba(33,37,41,0) 70%);
+    color: lightgoldenrodyellow;
+  }
+
   .btn{
     width: 150px;
     height: 45px;

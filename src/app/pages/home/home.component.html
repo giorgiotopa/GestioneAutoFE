@@ -1,52 +1,30 @@
 <div class="container">
   <div class="row justify-content-center">
 
-    <div *ngIf="autoList" class="col-12 my-5">
-      <h2 class="text-center text-light">Annunci Disponibili</h2>
+    <div *ngIf="autoList" class="col-7 my-5">
+      <h2 class="text-center display-6 fw-bold">Annunci Disponibili</h2>
     </div>
-    <div *ngFor="let auto of autoList" class="col-5 my-3 mx-2 card " >
-      <div class="row">
-        <div class="col-5">
-          <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
-          <img *ngIf="!auto.foto" src="../../../assets/img/immagine-non-disponibile.png" class="card-img-top" alt="">
+    <div *ngFor="let auto of autoList" class="col-5 my-3 mx-2 card bg-dark bg-opacity-75 rounded-5" >
+      <div class="row d-flex align-items-center">
+        <h3 class="card-title text-center mt-3">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h3>
+        <div class="col-5 ">
+          <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-3">
+          <img *ngIf="!auto.foto" src="../../../assets/img/immagine-non-disponibile.png" class="card-img-top rounded-3" alt="">
         </div>
-        <div  class="col-6">
-          <div class="card-body">
-            <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Marca: {{auto.marca}}</li>
-              <li class="list-group-item">Modello: {{auto.modello}}</li>
-              <li class="list-group-item">Anno di Immatricolazione: {{auto.annoDiImmatricolazione}}</li>
-              <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-              <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-              <li class="list-group-item">€ {{auto.prezzo}},00</li>
+          <div class="card-body col-6 ">
+            <ul class="list-group list-group-flush rounded-5">
+              <li class="list-group-item bg-transparent-gradient">Marca: {{auto.marca}}</li>
+              <li class="list-group-item bg-transparent-gradient">Modello: {{auto.modello}}</li>
+              <li class="list-group-item bg-transparent-gradient">Anno di Immatricolazione: {{auto.annoDiImmatricolazione}}</li>
+              <li class="list-group-item bg-transparent-gradient">Cilindrata: {{auto.cilindrata}}</li>
+              <li class="list-group-item bg-transparent-gradient">Alimentazione: {{auto.tipoAlimentazione}}</li>
+              <li class="list-group-item bg-transparent-gradient">€ {{auto.prezzo}},00</li>
             </ul>
           </div>
-        </div>
       </div>
       <div class="text-center">
         <button [routerLink]="['/dettagli', auto.id]" class="btn btn-warning my-3">Dettagli</button>
       </div>
     </div>
-
-
-    <!-- <div *ngFor="let auto of autoList" class="col-3 my-3 mx-2" >
-      <div  class="card">
-        <img [src]="auto.foto" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-            <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-            <li class="list-group-item">€ {{auto.prezzo}},00</li>
-            <div class="text-center">
-              <button [routerLink]="['/dettagli', auto.id]" class="btn btn-warning my-3">Dettagli</button>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div> -->
-
-
   </div>
 </div>
