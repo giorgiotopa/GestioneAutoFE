@@ -1,28 +1,29 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center bg-dark bg-opacity-75 rounded-5">
+    <h5 class="card-title display-5 fw-bold text-center my-3">{{auto.marca}} {{auto.modello}}</h5>
     <div class="col-4 my-3 mx-2" >
       <img [src]="auto.foto" class="card-img-top rounded-2" *ngIf="auto.foto">
+      <img src="../../../assets/img/immaine-non-disponibile.gif" class="card-img-top rounded-2" *ngIf="!auto.foto">
     </div>
-      <div  class="card col-4 my-3 mx-2">
-        <div class="card-body">
-          <h5 class="card-title">{{auto.marca}} {{auto.modello}}</h5>
+      <div  class="card col-4 my-3 mx-2 bg-dark bg-opacity-75">
+        <div class="card-body ">
+          <h5 class="card-title ">Dettagli Auto</h5>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Marca: {{auto.marca}}</li>
-            <li class="list-group-item">Modello: {{auto.modello}}</li>
-            <li class="list-group-item">Anno di immatricolazione: {{auto.annoDiImmatricolazione}}</li>
-            <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-            <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-            <li class="list-group-item">€ {{auto.prezzo}},00</li>
-            <li class="list-group-item"> {{auto.descrizione}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Marca:</span> {{auto.marca}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Modello:</span> {{auto.modello}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Anno di immatricolazione:</span> {{auto.annoDiImmatricolazione}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Cilindrata:</span> {{auto.cilindrata}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Alimentazione:</span> {{auto.tipoAlimentazione}}</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Prezzo:</span> {{auto.prezzo}},00 €</li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Descrizione:</span> {{auto.descrizione}}</li>
           </ul>
       </div>
       <div class="card-body">
         <h5 class="card-title">Dettagli Proprietario</h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Nome: {{user.nome}}</li>
-          <li class="list-group-item">Cognome: {{user.cognome}}</li>
-          <li class="list-group-item">Email: {{user.email}}</li>
-          <li class="list-group-item">Username: {{user.username}}</li>
+          <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Nome:</span> {{user.nome}}</li>
+          <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Cognome:</span> {{user.cognome}}</li>
+          <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Email:</span> {{user.email}}</li>
         </ul>
       </div>
     </div>
