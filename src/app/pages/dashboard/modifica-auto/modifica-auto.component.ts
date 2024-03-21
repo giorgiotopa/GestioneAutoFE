@@ -70,6 +70,9 @@ export class ModificaAutoComponent {
   updateAuto() {
     this.autoService.update(this.autoUpdate).subscribe(
       response => {
+        this.auto = response.response
+        console.log(response);
+
         this.isModifica = false;
       },
       error => {

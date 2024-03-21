@@ -31,8 +31,8 @@
 
             <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Alimentazione: </span> {{auto.tipoAlimentazione}}</li>
             <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient">
-              <select class="form-control" required>
-                <option value="" disabled selected>Scegli il tipo di alimentazione</option>
+              <select class="form-control" required  [(ngModel)]="autoUpdate.tipoAlimentazione">
+                <option [value]="auto.tipoAlimentazione" disabled>{{auto.tipoAlimentazione}}</option>
                 <option value="BENZINA">BENZINA</option>
                 <option value="DIESEL">DIESEL</option>
                 <option value="GPL">GPL</option>
