@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div class="text-center">
+        <div class="text-center mt-4">
           <button [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3 mx-2">Modifica</button>
           <button  class="btn btn-danger my-3" (click)="deleteAuto(auto.id)">Elimina</button>
         </div>
@@ -38,35 +38,35 @@
   <div class="col-12 d-flex justify-content-center">
     <div class="row">
       <h3 class="text-center col-12 my-5">Informazioni Utente</h3>
-      <div class="card col-7">
+      <div class="card col-7 bg-dark bg-opacity-75 rounded-5 ">
         <div class="card-body mx-2">
           <h5 class="card-title">Dettagli</h5>
           <table class="table">
             <tbody>
-              <tr>
-                <td><strong>Nome:</strong></td>
-                <td *ngIf="!isModificaAttiva">{{utente.nome}}</td>
-                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
+              <tr >
+                <td class="bg-transparent-gradient"><strong class="text-warning">Nome:</strong></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.nome}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
               </tr>
               <tr>
-                <td><strong>Cognome:</strong></td>
-                <td *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
-                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
+                <td class="bg-transparent-gradient"><strong class="text-warning">Cognome:</strong></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
               </tr>
               <tr>
-                <td><strong>Email:</strong></td>
-                <td *ngIf="!isModificaAttiva">{{utente.email}}</td>
-                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
+                <td class="bg-transparent-gradient"><strong class="text-warning">Email:</strong></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.email}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
               </tr>
               <tr>
-                <td><strong>Username:</strong></td>
-                <td *ngIf="!isModificaAttiva">{{utente.username}}</td>
-                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
+                <td class="bg-transparent-gradient"><strong class="text-warning">Username:</strong></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.username}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
               </tr>
               <tr>
-                <td><strong>Password:</strong></td>
-                <td *ngIf="!isModificaAttiva">******</td>
-                <td *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
+                <td class="bg-transparent-gradient"><strong class="text-warning">Password:</strong></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">******</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
               </tr>
             </tbody>
           </table>
@@ -76,13 +76,13 @@
           <button *ngIf="!isModificaAttiva" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
         </div>
       </div>
-      <div class="card mx-2 col-4">
+      <div class="card mx-2 col-4 bg-dark bg-opacity-75 rounded-5 ">
         <div class="card-body">
-          <h5 class="card-title">Avatar</h5>
+          <h5 class="card-title">Foto Utente</h5>
           <div class="d-flex justify-content-center ">
-            <img *ngIf="utente.avatar" [src]="utente.avatar" class="card-img-top avatar rounded-2">
+            <img *ngIf="utente.avatar" [src]="utente.avatar" class="card-img-top avatar rounded-5">
+            <img *ngIf="!utente.avatar" src="../../../assets/img/immaine-non-disponibile.gif" class="card-img-top avatar rounded-5">
           </div>
-          <p *ngIf="!utente.avatar" class="text-center mt-5">Immagine Non Presente</p>
         </div>
         <div class="d-flex justify-content-center my-5">
           <label for="avatarInput" *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</label>
