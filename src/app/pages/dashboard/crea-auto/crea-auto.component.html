@@ -1,20 +1,32 @@
 <div class="container">
   <h2 class="text-center my-5">Inserisci qui i dati della tua Auto</h2>
-   <form [formGroup]="autoForm" (ngSubmit)="saveAuto()">
+   <form [formGroup]="autoForm" (ngSubmit)="saveAuto()" class="row justify-content-center">
 
-      <div class="form-group my-2">
+      <div class="form-group col-7">
         <input type="text" class="form-control" formControlName="marca" placeholder="Marca" required>
+        <div *ngIf="autoForm.get('marca')?.invalid && autoForm.get('marca')?.touched" class="alert alert-warning my-1">
+          La Marca è obbligatoria
+        </div>
       </div>
-      <div class="form-group my-2">
+      <div class="form-group my-1 col-7">
         <input type="text" class="form-control" formControlName="modello" placeholder="Modello" required>
+        <div *ngIf="autoForm.get('modello')?.invalid && autoForm.get('modello')?.touched" class="alert alert-warning my-1">
+          Il Modello è obbligatorio
+        </div>
       </div>
-      <div class="form-group my-2">
+      <div class="form-group col-7">
         <input type="number" class="form-control" formControlName="annoDiImmatricolazione" placeholder="Anno Di Immatricolazione" required>
+        <div *ngIf="autoForm.get('annoDiImmatricolazione')?.invalid && autoForm.get('annoDiImmatricolazione')?.touched" class="alert alert-warning my-1">
+          L'anno di immatricolazione è obbligatorio
+        </div>
       </div>
-      <div class="form-group my-2">
+      <div class="form-group my-1 col-7">
         <input type="number" class="form-control" formControlName="cilindrata" placeholder="Cilindrata" required>
+        <div *ngIf="autoForm.get('cilindrata')?.invalid && autoForm.get('cilindrata')?.touched" class="alert alert-warning my-1">
+          La Cilindrata è obbligatoria
+        </div>
       </div>
-      <div class="form-group my-2">
+      <div class="form-group col-7">
         <select class="form-control" formControlName="tipoAlimentazione" required>
           <option value="" disabled selected>Scegli il tipo di alimentazione</option>
           <option value="BENZINA">BENZINA</option>
@@ -24,13 +36,24 @@
           <option value="IBRIDA">IBRIDA</option>
           <option value="ELETTRICA">ELETTRICA</option>
         </select>
+        <div *ngIf="autoForm.get('tipoAlimentazione')?.invalid && autoForm.get('tipoAlimentazione')?.touched" class="alert alert-warning my-1">
+          Il Tipo alimentazione è obbligatorio
+        </div>
       </div>
-      <div class="form-group my-2">
-        <input type="text" class="form-control" formControlName="descrizione" placeholder="Descrizione" required>
+      <div class="form-group my-1 col-7">
+        <textarea type="text" class="form-control" formControlName="descrizione" placeholder="Descrizione" required></textarea>
+        <div *ngIf="autoForm.get('descrizione')?.invalid && autoForm.get('descrizione')?.touched" class="alert alert-warning my-1">
+          La Descrizione è obbligatoria
+        </div>
       </div>
-      <div class="form-group my-2">
+      <div class="form-group col-7">
         <input type="number" class="form-control" formControlName="prezzo" placeholder="Prezzo" required>
+        <div *ngIf="autoForm.get('prezzo')?.invalid && autoForm.get('prezzo')?.touched" class="alert alert-warning my-1">
+          Il Prezzo è obbligatorio
+        </div>
       </div>
-      <button type="submit" class="btn btn-warning">Crea Auto</button>
+      <div class="d-flex justify-content-center mt-4">
+        <button type="submit" [disabled]="autoForm.invalid" class="btn btn-warning">Crea Auto</button>
+      </div>
     </form>
 </div>

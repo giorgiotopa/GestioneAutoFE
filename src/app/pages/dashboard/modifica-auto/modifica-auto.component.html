@@ -1,38 +1,56 @@
-<div class="container">
+<div *ngIf="auto" class="container">
   <div class="row justify-content-center">
-    <div *ngIf="auto" class="col-4 my-3 mx-2" >
-      <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
-      <div  class="d-flex justify-content-center my-5">
-        <label *ngIf="auto.foto" for="fotoInput" class="btn btn-warning">Modifica</label>
-        <label *ngIf="!auto.foto" for="fotoInput" class="btn btn-warning">Aggiungi</label>
-        <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+    <h2 class="text-center">La tua {{auto.marca}} {{auto.modello}} </h2>
+    <div *ngIf="auto" class="card col-4 my-3 mx-2 bg-dark bg-opacity-75 rounded-5">
+      <div class="card-body">
+        <h5 class="card-title text-center fs-3">Foto</h5>
+        <img *ngIf="auto.foto" [src]="auto.foto" class="card-img-top rounded-2">
+        <img *ngIf="!auto.foto" src="../../../../assets/img/immaine-non-disponibile.gif" class="card-img-top rounded-2">
+        <div  class="d-flex justify-content-center my-5">
+          <label *ngIf="auto.foto" for="fotoInput" class="btn btn-warning">Modifica</label>
+          <label *ngIf="!auto.foto" for="fotoInput" class="btn btn-warning">Aggiungi</label>
+          <input type="file" id="fotoInput" (change)="uploadFotoAuto($event, auto.id)" style="display: none;">
+        </div>
       </div>
     </div>
-    <div *ngIf="auto" class="card col-4 my-3 mx-2">
+    <div *ngIf="auto" class="card col-4 my-3 mx-2 bg-dark bg-opacity-75 rounded-5">
       <div class="card-body">
-        <h5 class="card-title">{{auto.marca}} {{auto.modello}}</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Marca: {{auto.marca}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.marca"></li>
+        <h5 class="card-title text-center">Dettagli</h5>
+          <ul class="list-group list-group-flush rounded-2 mt-4">
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Marca: </span> {{auto.marca}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><input type="text" [(ngModel)]="autoUpdate.marca" class="form-control"></li>
 
-          <li class="list-group-item">Modello: {{auto.modello}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.modello"></li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Modello: </span> {{auto.modello}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><input type="text" [(ngModel)]="autoUpdate.modello" class="form-control"></li>
 
-          <li class="list-group-item">Anno di immatricolazione: {{auto.annoDiImmatricolazione}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.annoDiImmatricolazione"></li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Anno di immatricolazione: </span> {{auto.annoDiImmatricolazione}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><input type="text" [(ngModel)]="autoUpdate.annoDiImmatricolazione" class="form-control"></li>
 
-          <li class="list-group-item">Cilindrata: {{auto.cilindrata}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.cilindrata"></li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Cilindrata:</span> {{auto.cilindrata}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><input type="number" [(ngModel)]="autoUpdate.cilindrata" class="form-control"></li>
 
-          <li class="list-group-item">Alimentazione: {{auto.tipoAlimentazione}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.tipoAlimentazione"></li>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Alimentazione: </span> {{auto.tipoAlimentazione}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient">
+              <select class="form-control" required>
+                <option value="" disabled selected>Scegli il tipo di alimentazione</option>
+                <option value="BENZINA">BENZINA</option>
+                <option value="DIESEL">DIESEL</option>
+                <option value="GPL">GPL</option>
+                <option value="METANO">METANO</option>
+                <option value="IBRIDA">IBRIDA</option>
+                <option value="ELETTRICA">ELETTRICA</option>
+              </select>
+            </li>
 
-          <li class="list-group-item">€ {{auto.prezzo}},00</li>
-          <li *ngIf="isModifica" class="list-group-item"><input type="text" [(ngModel)]="autoUpdate.prezzo"></li>
 
-          <li class="list-group-item"> {{auto.descrizione}}</li>
-          <li *ngIf="isModifica" class="list-group-item"><textarea type="text" [(ngModel)]="autoUpdate.descrizione"></textarea></li>
-        </ul>
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Prezzo: </span> {{auto.prezzo}},00 €</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><input type="number" [(ngModel)]="autoUpdate.prezzo" class="form-control"></li>
+
+            <li class="list-group-item bg-transparent-gradient"><span class="text-warning">Descrizione:</span> {{auto.descrizione}}</li>
+            <li *ngIf="isModifica" class="list-group-item bg-transparent-gradient"><textarea type="textarea" [(ngModel)]="autoUpdate.descrizione" class="form-control"></textarea></li>
+          </ul>
+
+
         <div class="d-flex justify-content-center my-5">
           <button *ngIf="isModifica" class="btn btn-warning" (click)="updateAuto()">Salva</button>
           <button *ngIf="!isModifica" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>

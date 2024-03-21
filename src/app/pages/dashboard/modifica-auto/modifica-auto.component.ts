@@ -4,6 +4,7 @@ import { iAuto } from '../../Models/i-auto';
 import { ActivatedRoute } from '@angular/router';
 import { iApiResponseObj } from '../../Models/i-api-response-obj';
 import { iRegisterAuto } from '../../Models/i-register-auto';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modifica-auto',
