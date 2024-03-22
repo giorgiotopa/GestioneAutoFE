@@ -160,17 +160,15 @@ export class DashboardComponent {
       console.error('Errore durante l\'eliminazione dell\'auto:', error);
     })
   }
-  // deleteUtente(id:string):void{
-  //   this.autoService.delete(id).subscribe(response =>{
-  //     console.log(response);
-  //     const index = this.autoList.findIndex(auto => auto.id === id);
-  //     if (index !== -1) {
-  //       this.autoList.splice(index, 1);
-  //     }
-  //   },
-  //   error => {
-  //     console.error('Errore durante l\'eliminazione dell\'auto:', error);
-  //   })
-  // }
+
+  deleteUtente(id:string):void{
+    this.utenteService.delete(id).subscribe(response =>{
+      console.log(response);
+      this.authService.logout();
+    },
+    error => {
+      console.error('Errore durante l\'eliminazione dell\'utente:', error);
+    })
+  }
 
 }

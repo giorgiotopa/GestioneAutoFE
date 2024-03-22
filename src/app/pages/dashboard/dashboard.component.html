@@ -16,7 +16,7 @@
             <img *ngIf="!auto.foto" src="../../../assets/img/immaine-non-disponibile.gif" class="card-img-top rounded-2">
           </div>
           <div  class="col-6">
-            <div class="card-body">
+            <div *ngIf="auto.foto" class="card-body">
 
               <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-transparent-gradient d-flex justify-content-between"><span class="text-warning">Marca:</span> {{auto.marca}}</li>
@@ -104,7 +104,7 @@
       </div>
       <div class="col-12 my-5 text-center">
         <h3 class="">Vuoi eliminare il tuo Account</h3>
-        <button  class="btn btn-danger my-3" (click)="attivaEliminaAuto()">Elimina</button>
+        <button  class="btn btn-danger my-3" (click)="deleteUtente(utente.id)">Elimina</button>
       </div>
 
     </div>

@@ -26,7 +26,7 @@ export class UtenteService {
   }
 
   delete(id:string){
-    return this.http.delete<iUser>(this.apiUrl + `/${id}`);
+    return this.http.delete<iUser>(this.apiUrl + `/id` + `/${id}`);
   }
 
   uploadAvatar(id: string, file: File): Observable<any> {
