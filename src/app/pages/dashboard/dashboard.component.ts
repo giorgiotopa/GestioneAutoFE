@@ -1,15 +1,10 @@
 import { iAccessData } from './../Models/i-access-data';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { iUser } from '../Models/i-user';
 import { UtenteService } from '../../utente.service';
-import { Subscription } from 'rxjs';
 import { iAuto } from '../Models/i-auto';
 import { AutoService } from '../../auto.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { iRegisterAuto } from '../Models/i-register-auto';
-import { iApiResponseArr } from '../Models/i-api-response-arr';
-import { iApiResponseObj } from '../Models/i-api-response-obj';
 import { iUserAuto } from '../Models/i-user-auto';
 
 @Component({
@@ -19,19 +14,21 @@ import { iUserAuto } from '../Models/i-user-auto';
 })
 export class DashboardComponent {
 
+  autoSection!: any;
+
   userData: iAccessData | null = null;
   utente!: iUser;
   auto!: iAuto;
-  isModificaAttiva = false;
+  isModificaAuto = false;
+  isEliminaAuto = false;
+  isModificaUtente = false;
 
-  autoList: iAuto[] = [];
+  autoList!: iAuto[];
 
   constructor(
     private authService: AuthService,
     private utenteService: UtenteService,
     private autoService: AutoService,
-    private formBuilder: FormBuilder,
-
     ) { }
 
   ngOnInit(): void {
@@ -41,6 +38,8 @@ export class DashboardComponent {
         this.getAutoUtente(this.utente.id);
       }
     });
+
+    this.autoSection = document.getElementById('autoSection');
   }
 
   uploadFotoAuto(event: any, id:string) {
@@ -100,7 +99,7 @@ export class DashboardComponent {
     this.utenteService.update(this.utente).subscribe(
       response => {
         console.log('Utente aggiornato con successo:', response);
-        this.isModificaAttiva = false;
+        this.isModificaUtente = false;
       },
       error => {
         console.error("Errore durante l'aggiornamento dell'utente:", error);
@@ -108,8 +107,24 @@ export class DashboardComponent {
     );
   }
 
-  attivaModifica(){
-    this.isModificaAttiva = true;
+  attivaModificaAuto(){
+    this.isModificaAuto = true;
+    this.scrollToAutoSection();
+  }
+
+  attivaEliminaAuto(){
+    this.isEliminaAuto = true;
+    this.scrollToAutoSection();
+  }
+
+  scrollToAutoSection() {
+    if (this.autoSection) {
+      this.autoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  attivaModificaUtente(){
+    this.isModificaUtente = true;
     this.utente.password = "";
   }
 

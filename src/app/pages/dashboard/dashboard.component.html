@@ -6,7 +6,7 @@
     </div>
 
       <div class="col-12 my-5">
-        <h3 class="text-center">Le Tue Auto</h3>
+        <h3 id="autoSection" class="text-center">Le Tue Auto</h3>
       </div>
       <div *ngFor="let auto of autoList" class="col-7 my-3 mx-2 card bg-dark bg-opacity-75 rounded-5 p-5">
         <h3 class="card-title text-center mb-5">{{auto.marca}} {{auto.modello}} {{auto.annoDiImmatricolazione}}</h3>
@@ -30,9 +30,17 @@
           </div>
         </div>
         <div class="text-center mt-4">
-          <button [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3 mx-2">Modifica</button>
-          <button  class="btn btn-danger my-3" (click)="deleteAuto(auto.id)">Elimina</button>
+          <button *ngIf="isModificaAuto" [routerLink]="['/dashboard/modifica-auto', auto.id]" class="btn btn-warning my-3 mx-2">Modifica</button>
+          <button *ngIf="isEliminaAuto" class="btn btn-danger my-3" (click)="deleteAuto(auto.id)">Delete</button>
         </div>
+      </div>
+      <div class="col-12 mt-5 text-center">
+        <h3 class="">Vuoi modificare le tue Auto?</h3>
+        <button  class="btn btn-warning my-3" (click)="attivaModificaAuto()">Modifica Auto</button>
+      </div>
+      <div class="col-12 my-5 text-center">
+        <h3 class="">Vuoi eliminare qualche Auto?</h3>
+        <button  class="btn btn-danger my-3" (click)="attivaEliminaAuto()">Elimina Auto</button>
       </div>
   </div>
   <div class="col-12 d-flex justify-content-center">
@@ -45,35 +53,35 @@
             <tbody>
               <tr >
                 <td class="bg-transparent-gradient"><strong class="text-warning">Nome:</strong></td>
-                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.nome}}</td>
-                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.nome"></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaUtente">{{utente.nome}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaUtente"><input type="text" [(ngModel)]="utente.nome"></td>
               </tr>
               <tr>
                 <td class="bg-transparent-gradient"><strong class="text-warning">Cognome:</strong></td>
-                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.cognome}}</td>
-                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.cognome"></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaUtente">{{utente.cognome}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaUtente"><input type="text" [(ngModel)]="utente.cognome"></td>
               </tr>
               <tr>
                 <td class="bg-transparent-gradient"><strong class="text-warning">Email:</strong></td>
-                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.email}}</td>
-                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.email"></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaUtente">{{utente.email}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaUtente"><input type="text" [(ngModel)]="utente.email"></td>
               </tr>
               <tr>
                 <td class="bg-transparent-gradient"><strong class="text-warning">Username:</strong></td>
-                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">{{utente.username}}</td>
-                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.username"></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaUtente">{{utente.username}}</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaUtente"><input type="text" [(ngModel)]="utente.username"></td>
               </tr>
               <tr>
                 <td class="bg-transparent-gradient"><strong class="text-warning">Password:</strong></td>
-                <td class="bg-transparent-gradient" *ngIf="!isModificaAttiva">******</td>
-                <td class="bg-transparent-gradient" *ngIf="isModificaAttiva"><input type="text" [(ngModel)]="utente.password"></td>
+                <td class="bg-transparent-gradient" *ngIf="!isModificaUtente">******</td>
+                <td class="bg-transparent-gradient" *ngIf="isModificaUtente"><input type="text" [(ngModel)]="utente.password"></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="d-flex justify-content-center my-5">
-          <button *ngIf="isModificaAttiva" class="btn btn-warning" (click)="updateUtente()">Salva</button>
-          <button *ngIf="!isModificaAttiva" class="btn btn-warning" (click)="attivaModifica()">Modifica</button>
+          <button *ngIf="isModificaUtente" class="btn btn-warning" (click)="updateUtente()">Salva</button>
+          <button *ngIf="!isModificaUtente" class="btn btn-warning" (click)="attivaModificaUtente()">Modifica</button>
         </div>
       </div>
       <div class="card mx-2 col-4 bg-dark bg-opacity-75 rounded-5 ">

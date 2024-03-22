@@ -2,7 +2,7 @@
   <div class="row justify-content-center text-center mt-5">
     <div class="col-5">
       <div class="align-content-center">
-        <h2 class="my-4">Registrazione</h2>
+        <h2 class="my-4">Registrati qui</h2>
         <form [formGroup]="registrationForm" (ngSubmit)="save()" class="mt-4">
           <input formControlName="nome" type="text" class="form-control my-2" placeholder="Nome">
           <div *ngIf="registrationForm.get('nome')?.invalid && registrationForm.get('nome')?.touched" class="alert alert-warning">
