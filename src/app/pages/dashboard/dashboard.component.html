@@ -3,7 +3,7 @@
       <div class=" col-12 mt-5 text-center">
         <h2 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h2>
         <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
-    </div>
+      </div>
 
       <div class="col-12 my-5">
         <h3 id="autoSection" class="text-center">Le Tue Auto</h3>
@@ -43,7 +43,7 @@
         <button  class="btn btn-danger my-3" (click)="attivaEliminaAuto()">Elimina Auto</button>
       </div>
   </div>
-  <div class="col-12 d-flex justify-content-center">
+  <div id="utenteSection" class="col-12 d-flex justify-content-center">
     <div class="row">
       <h3 class="text-center col-12 my-5">Informazioni Utente</h3>
       <div class="card col-7 bg-dark bg-opacity-75 rounded-5 ">
@@ -81,7 +81,6 @@
         </div>
         <div class="d-flex justify-content-center my-5">
           <button *ngIf="isModificaUtente" class="btn btn-warning" (click)="updateUtente()">Salva</button>
-          <button *ngIf="!isModificaUtente" class="btn btn-warning" (click)="attivaModificaUtente()">Modifica</button>
         </div>
       </div>
       <div class="card mx-2 col-4 bg-dark bg-opacity-75 rounded-5 ">
@@ -92,12 +91,22 @@
             <img *ngIf="!utente.avatar" src="../../../assets/img/immaine-non-disponibile.gif" class="card-img-top avatar rounded-5">
           </div>
         </div>
-        <div class="d-flex justify-content-center my-5">
+        <div *ngIf="isModificaUtente" class="d-flex justify-content-center my-5">
           <label for="avatarInput" *ngIf="!utente.avatar" class="btn btn-warning">Aggiungi</label>
           <label for="avatarInput" *ngIf="utente.avatar" class="btn btn-warning">Modifica</label>
           <input type="file" id="avatarInput" (change)="uploadAvatar($event)" style="display: none;">
         </div>
       </div>
+
+      <div class="col-12 mt-5 text-center">
+        <h3 class="">Vuoi modificare i tuoi Dettagli?</h3>
+        <button class="btn btn-warning" (click)="attivaModificaUtente()">Modifica</button>
+      </div>
+      <div class="col-12 my-5 text-center">
+        <h3 class="">Vuoi eliminare il tuo Account</h3>
+        <button  class="btn btn-danger my-3" (click)="attivaEliminaAuto()">Elimina</button>
+      </div>
+
     </div>
   </div>
 </div>

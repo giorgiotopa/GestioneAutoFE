@@ -15,6 +15,7 @@ import { iUserAuto } from '../Models/i-user-auto';
 export class DashboardComponent {
 
   autoSection!: any;
+  utenteSection!: any;
 
   userData: iAccessData | null = null;
   utente!: iUser;
@@ -40,6 +41,7 @@ export class DashboardComponent {
     });
 
     this.autoSection = document.getElementById('autoSection');
+    this.utenteSection = document.getElementById('utenteSection');
   }
 
   uploadFotoAuto(event: any, id:string) {
@@ -123,8 +125,15 @@ export class DashboardComponent {
     }
   }
 
+  scrollToUtenteSection() {
+    if (this.utenteSection) {
+      this.utenteSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   attivaModificaUtente(){
     this.isModificaUtente = true;
+    this.scrollToUtenteSection();
     this.utente.password = "";
   }
 
@@ -151,5 +160,17 @@ export class DashboardComponent {
       console.error('Errore durante l\'eliminazione dell\'auto:', error);
     })
   }
+  // deleteUtente(id:string):void{
+  //   this.autoService.delete(id).subscribe(response =>{
+  //     console.log(response);
+  //     const index = this.autoList.findIndex(auto => auto.id === id);
+  //     if (index !== -1) {
+  //       this.autoList.splice(index, 1);
+  //     }
+  //   },
+  //   error => {
+  //     console.error('Errore durante l\'eliminazione dell\'auto:', error);
+  //   })
+  // }
 
 }
