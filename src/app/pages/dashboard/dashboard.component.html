@@ -1,11 +1,11 @@
-<div class="container text-light">
+<div class="container">
     <div class="row justify-content-center mt-5">
       <div class=" col-12 mt-5 text-center">
         <h2 routerLink="/dashboard/crea-auto" class="card-title">Vuoi vendere un auto?</h2>
         <a routerLink="/dashboard/crea-auto" class="btn btn-warning my-4">Inserisci Auto</a>
       </div>
 
-      <div class="col-12 my-5">
+      <div class="col-8 my-5">
         <h3 id="autoSection" class="text-center">Le Tue Auto</h3>
       </div>
       <div *ngFor="let auto of autoList" class="col-7 my-3 mx-2 card bg-dark bg-opacity-75 rounded-5 p-5">
@@ -16,8 +16,7 @@
             <img *ngIf="!auto.foto" src="../../../assets/img/immaine-non-disponibile.gif" class="card-img-top rounded-2">
           </div>
           <div  class="col-6">
-            <div *ngIf="auto.foto" class="card-body">
-
+            <div *ngIf="auto" class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-transparent-gradient d-flex justify-content-between"><span class="text-warning">Marca:</span> {{auto.marca}}</li>
                 <li class="list-group-item bg-transparent-gradient d-flex justify-content-between"><span class="text-warning">Modello:</span> {{auto.modello}}</li>
