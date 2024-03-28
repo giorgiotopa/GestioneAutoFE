@@ -41,7 +41,6 @@ export class LoginComponent {
         (error) => {
           console.error(error);
           this.errore=true;
-          // Gestisci gli errori qui, ad esempio mostrando un messaggio all'utente
         }
       );
     }

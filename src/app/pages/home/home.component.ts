@@ -1,8 +1,6 @@
-import { Observable, tap } from 'rxjs';
 import { AutoService } from '../../auto.service';
 import { iApiResponseArr } from '../Models/i-api-response-arr';
 import { iAuto } from '../Models/i-auto';
-import { AuthService } from './../auth/auth.service';
 import { Component } from '@angular/core';
 
 @Component({

@@ -36,7 +36,7 @@ export class CreaAutoComponent {
         }
       });
 
-      this.initAutoForm(); // Inizializza il reactive form per l'auto
+      this.initAutoForm();
 
     }
 

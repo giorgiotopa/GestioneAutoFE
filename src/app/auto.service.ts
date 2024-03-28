@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Observable} from 'rxjs';
 import { iAuto } from './pages/Models/i-auto';
 import { iApiResponseArr } from './pages/Models/i-api-response-arr';
 import { iApiResponseObj } from './pages/Models/i-api-response-obj';
@@ -21,11 +21,6 @@ export class AutoService {
   getAll():Observable<iApiResponseArr<iAuto>>{
     return this.http.get<iApiResponseArr<iAuto>>(this.apiUrl);
   }
-
-  // getAllMarca():Observable<string[]>{
-  //   return this.http.get<iAuto[]>(this.apiUrl)
-  //   .pipe(map(autoArr => autoArr.map(a => a.marca)));
-  // }
 
   getById(id:string):Observable<iApiResponseObj<iAuto>>{
     return this.http.get<iApiResponseObj<iAuto>>(this.apiUrl + `/${id}`);

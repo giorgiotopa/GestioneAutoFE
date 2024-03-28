@@ -2,7 +2,6 @@ import { AutoService } from './../../auto.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { iAuto } from '../Models/i-auto';
-import { iApiResponseArr } from '../Models/i-api-response-arr';
 import { iApiResponseObj } from '../Models/i-api-response-obj';
 import { iUser } from '../Models/i-user';
 

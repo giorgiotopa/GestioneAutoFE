@@ -19,7 +19,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    // Controlla se l'URL della richiesta inizia con '/utenti/'
     if (request.url.includes('/utenti/')) {
       return this.authSvc.user$.pipe(
         take(1),
